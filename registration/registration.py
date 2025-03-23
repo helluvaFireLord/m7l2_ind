@@ -37,7 +37,6 @@ def display_users():
         for user in cursor.fetchall():
             print(f"Логин: {user[0]}, Электронная почта: {user[1]}")
 
-
 def user_choice():
     print("\n1. Авторизоваться")
     print("2. Зарегистрироваться")
@@ -61,7 +60,10 @@ def main():
         username = input("Введите логин нового пользователя: ")
         email = input("Введите адрес электронной почты нового пользователя: ")
         password = input("Введите пароль нового пользователя: ")
-        add_user(username, email, password)
+        if add_user(username, email, password):
+            print("Пользователь успешно добавлен.")
+        else:
+            print("Ошибка добавления пользователя. Возможно, логин уже существует.")
     else:
         print("Неверный ввод. Пожалуйста, введите 1 для авторизации или 2 для регистрации.")
 
